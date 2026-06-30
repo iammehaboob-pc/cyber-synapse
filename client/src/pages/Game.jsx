@@ -217,26 +217,31 @@ const Game = ({ user, onUpdateUser, playSound }) => {
     <div className="game-layout">
       {/* Settings Selector (Idle state) */}
       {gameState === 'idle' && (
-        <div className="cyber-card cyan-glow" style={{ maxWidth: '500px', width: '100%', textAlign: 'center', padding: '3rem 2rem' }}>
-          <h2 className="glitch-text" style={{ fontSize: '2.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>
-            NEON_MEMORY
-          </h2>
-          <p style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-title)', letterSpacing: '1px', marginBottom: '2rem' }}>
+        <div className="cyber-card cyan-glow" style={{ maxWidth: '520px', width: '100%', textAlign: 'center', padding: '3rem 2.4rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.35rem', marginBottom: '1.5rem' }}>
+            <span style={{ fontFamily: 'var(--font-title)', fontSize: '0.68rem', letterSpacing: '0.5rem', textTransform: 'uppercase', color: 'var(--text-secondary)' }}>
+              Neural Arena
+            </span>
+            <h2 className="glitch-text" style={{ fontSize: '2.35rem', marginBottom: '0.2rem', color: 'var(--text-primary)' }}>
+              NEON_MEMORY
+            </h2>
+          </div>
+          <p style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-title)', letterSpacing: '1px', marginBottom: '1.8rem', fontSize: '0.92rem' }}>
             DECRYPT THE COGNITIVE MATRIX
           </p>
 
-          <div style={{ margin: '2rem 0' }}>
-            <label className="form-label" style={{ marginBottom: '0.75rem' }}>Select Grid Difficulty</label>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+          <div style={{ margin: '2rem 0 1.6rem' }}>
+            <label className="form-label" style={{ marginBottom: '0.85rem', textAlign: 'left' }}>Select Grid Difficulty</label>
+            <div style={{ display: 'flex', gap: '0.9rem', justifyContent: 'center' }}>
               <button
                 onClick={() => { playSound('click'); setDifficulty('easy'); }}
                 className="btn-cyber"
                 style={{
                   flex: 1,
-                  background: difficulty === 'easy' ? 'var(--neon-cyan)' : 'transparent',
-                  color: difficulty === 'easy' ? '#000' : 'var(--neon-cyan)',
+                  background: difficulty === 'easy' ? 'linear-gradient(135deg, #67f9ff, #4cd8e1)' : 'transparent',
+                  color: difficulty === 'easy' ? '#08111a' : 'var(--neon-cyan)',
                   borderColor: 'var(--neon-cyan)',
-                  boxShadow: difficulty === 'easy' ? '0 0 10px var(--neon-cyan-glow)' : 'none'
+                  boxShadow: difficulty === 'easy' ? '0 0 18px var(--neon-cyan-glow)' : '0 0 0 1px rgba(103, 249, 255, 0.08)'
                 }}
               >
                 EASY (4x4)
@@ -246,10 +251,10 @@ const Game = ({ user, onUpdateUser, playSound }) => {
                 className="btn-cyber"
                 style={{
                   flex: 1,
-                  background: difficulty === 'hard' ? 'var(--neon-pink)' : 'transparent',
-                  color: difficulty === 'hard' ? '#fff' : 'var(--neon-pink)',
+                  background: difficulty === 'hard' ? 'linear-gradient(135deg, #ff4d87, #ff2a6d)' : 'transparent',
+                  color: difficulty === 'hard' ? '#ffffff' : 'var(--neon-pink)',
                   borderColor: 'var(--neon-pink)',
-                  boxShadow: difficulty === 'hard' ? '0 0 10px var(--neon-pink-glow)' : 'none'
+                  boxShadow: difficulty === 'hard' ? '0 0 18px var(--neon-pink-glow)' : '0 0 0 1px rgba(255, 77, 135, 0.08)'
                 }}
               >
                 HARD (6x6)
@@ -257,9 +262,9 @@ const Game = ({ user, onUpdateUser, playSound }) => {
             </div>
           </div>
 
-          <div style={{ background: 'rgba(0, 0, 0, 0.4)', padding: '1rem', borderRadius: '4px', border: '1px solid var(--panel-border)', marginBottom: '2rem', textAlign: 'left', fontSize: '0.95rem' }}>
-            <p style={{ color: 'var(--text-primary)', fontWeight: 'bold', marginBottom: '0.5rem' }}>RULESET:</p>
-            <ul style={{ listStyleType: 'square', paddingLeft: '1.25rem', color: 'var(--text-secondary)', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+          <div style={{ background: 'linear-gradient(180deg, rgba(10, 14, 22, 0.58), rgba(7, 9, 14, 0.42))', padding: '1.15rem', borderRadius: '12px', border: '1px solid rgba(103, 249, 255, 0.14)', marginBottom: '1.8rem', textAlign: 'left', fontSize: '0.95rem' }}>
+            <p style={{ color: 'var(--text-primary)', fontWeight: 'bold', marginBottom: '0.6rem' }}>RULESET:</p>
+            <ul style={{ listStyleType: 'square', paddingLeft: '1.25rem', color: 'var(--text-secondary)', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
               <li>Find all matching icons before the timer reaches zero.</li>
               <li>Easy mode has 8 matching pairs with a 60 second timer limit.</li>
               <li>Hard mode has 18 matching pairs with a 120 second timer limit.</li>
@@ -267,7 +272,7 @@ const Game = ({ user, onUpdateUser, playSound }) => {
             </ul>
           </div>
 
-          <button className="btn-cyber btn-cyber-primary" style={{ width: '100%', padding: '1rem' }} onClick={initializeGame}>
+          <button className="btn-cyber btn-cyber-primary" style={{ width: '100%', padding: '1rem', borderRadius: '12px' }} onClick={initializeGame}>
             <Play size={18} style={{ marginRight: '0.5rem', display: 'inline', verticalAlign: 'middle' }} />
             INITIALIZE NEURAL LINK
           </button>

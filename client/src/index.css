@@ -1,24 +1,25 @@
 /* Global Variables & Design System */
 :root {
-  --bg-dark: #07080d;
-  --bg-dark-accent: #0f111a;
-  --panel-bg: rgba(15, 17, 26, 0.7);
-  --panel-border: rgba(0, 243, 255, 0.15);
-  --neon-cyan: #00f3ff;
-  --neon-cyan-glow: rgba(0, 243, 255, 0.4);
-  --neon-pink: #ff0055;
-  --neon-pink-glow: rgba(255, 0, 85, 0.4);
-  --neon-green: #39ff14;
-  --neon-green-glow: rgba(57, 255, 20, 0.4);
-  --neon-purple: #b026ff;
-  --neon-purple-glow: rgba(176, 38, 255, 0.4);
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
+  --bg-dark: #05070d;
+  --bg-dark-accent: #0b1018;
+  --panel-bg: linear-gradient(180deg, rgba(14, 20, 31, 0.78), rgba(10, 14, 22, 0.64));
+  --panel-border: rgba(99, 245, 255, 0.18);
+  --neon-cyan: #67f9ff;
+  --neon-cyan-glow: rgba(103, 249, 255, 0.22);
+  --neon-pink: #ff4d87;
+  --neon-pink-glow: rgba(255, 77, 135, 0.25);
+  --neon-green: #6dff8d;
+  --neon-green-glow: rgba(109, 255, 141, 0.28);
+  --neon-purple: #9a5cff;
+  --neon-purple-glow: rgba(154, 92, 255, 0.28);
+  --text-primary: #f8fbff;
+  --text-secondary: #94a8c4;
   --text-muted: #64748b;
-  --card-back: #161824;
+  --card-back: #101726;
   --font-title: 'Orbitron', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Rajdhani', -apple-system, BlinkMacSystemFont, sans-serif;
-  --transition-speed: 0.3s;
+  --transition-speed: 0.25s;
+  --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.42);
 }
 
 /* Reset and Base Styles */
@@ -30,9 +31,10 @@
 
 body {
   background-color: var(--bg-dark);
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(255, 0, 85, 0.08) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(0, 243, 255, 0.08) 0px, transparent 50%);
+  background-image:
+    radial-gradient(circle at top left, rgba(255, 77, 135, 0.18), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(103, 249, 255, 0.16), transparent 20%),
+    linear-gradient(180deg, #05070d 0%, #080b14 45%, #05070d 100%);
   color: var(--text-primary);
   font-family: var(--font-body);
   font-size: 1.1rem;
@@ -41,6 +43,31 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(70px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.22;
+}
+
+body::before {
+  top: -120px;
+  left: -100px;
+  background: var(--neon-pink);
+}
+
+body::after {
+  bottom: -120px;
+  right: -100px;
+  background: var(--neon-cyan);
 }
 
 /* Scrollbar customization */
@@ -67,10 +94,12 @@ body {
 
 main.container {
   flex: 1;
-  max-width: 1200px;
+  max-width: 1160px;
   width: 100%;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 2.75rem 1.5rem 3.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* Typography */
@@ -81,33 +110,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glitch-text {
-  text-shadow: 
-    2px 2px 0px var(--neon-pink),
-    -2px -2px 0px var(--neon-cyan);
-  animation: text-pulse 2s infinite ease-in-out;
+  text-shadow: 0 0 14px var(--neon-cyan-glow);
+  animation: text-pulse 3.5s infinite ease-in-out;
 }
 
 @keyframes text-pulse {
   0%, 100% {
-    text-shadow: 2px 2px 0px var(--neon-pink), -2px -2px 0px var(--neon-cyan);
+    text-shadow: 0 0 14px var(--neon-cyan-glow);
   }
   50% {
-    text-shadow: 3px 1px 2px var(--neon-pink), -3px -1px 2px var(--neon-cyan);
+    text-shadow: 0 0 18px var(--neon-pink-glow), 0 0 10px var(--neon-cyan-glow);
   }
 }
 
 /* Glassmorphism Panel */
 .cyber-card {
   background: var(--panel-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--panel-border);
-  border-radius: 8px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  padding: 2.2rem;
   position: relative;
   overflow: hidden;
-  transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+  transition: border-color var(--transition-speed), box-shadow var(--transition-speed), transform var(--transition-speed);
 }
 
 .cyber-card::before {
@@ -120,25 +147,29 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
 }
 
+.cyber-card:hover {
+  transform: translateY(-2px);
+}
+
 .cyber-card.cyan-glow:hover {
   border-color: var(--neon-cyan);
-  box-shadow: 0 0 15px var(--neon-cyan-glow);
+  box-shadow: 0 0 0 1px var(--neon-cyan-glow), 0 18px 50px rgba(0, 0, 0, 0.42);
 }
 
 .cyber-card.pink-glow:hover {
   border-color: var(--neon-pink);
-  box-shadow: 0 0 15px var(--neon-pink-glow);
+  box-shadow: 0 0 0 1px var(--neon-pink-glow), 0 18px 50px rgba(0, 0, 0, 0.42);
 }
 
 /* Interactive Controls (Buttons) */
 .btn-cyber {
   font-family: var(--font-title);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.4px;
   text-transform: uppercase;
-  padding: 0.75rem 1.75rem;
-  border-radius: 4px;
+  padding: 0.82rem 1.6rem;
+  border-radius: 10px;
   border: 1px solid transparent;
   cursor: pointer;
   position: relative;
@@ -146,32 +177,34 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
+.btn-cyber:hover {
+  transform: translateY(-2px);
+}
+
 .btn-cyber-primary {
-  background: transparent;
+  background: linear-gradient(135deg, rgba(103, 249, 255, 0.16), rgba(103, 249, 255, 0.04));
   color: var(--neon-cyan);
   border-color: var(--neon-cyan);
-  box-shadow: 0 0 10px rgba(0, 243, 255, 0.1) inset, 0 0 5px rgba(0, 243, 255, 0.1);
+  box-shadow: 0 0 0 1px rgba(103, 249, 255, 0.08), 0 0 16px rgba(103, 249, 255, 0.1);
 }
 
 .btn-cyber-primary:hover {
-  background: var(--neon-cyan);
-  color: #000;
-  box-shadow: 0 0 15px var(--neon-cyan);
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, #67f9ff, #4cd8e1);
+  color: #08111a;
+  box-shadow: 0 0 18px var(--neon-cyan-glow);
 }
 
 .btn-cyber-secondary {
-  background: transparent;
+  background: linear-gradient(135deg, rgba(255, 77, 135, 0.18), rgba(255, 77, 135, 0.04));
   color: var(--neon-pink);
   border-color: var(--neon-pink);
-  box-shadow: 0 0 10px rgba(255, 0, 85, 0.1) inset, 0 0 5px rgba(255, 0, 85, 0.1);
+  box-shadow: 0 0 0 1px rgba(255, 77, 135, 0.08), 0 0 16px rgba(255, 77, 135, 0.08);
 }
 
 .btn-cyber-secondary:hover {
-  background: var(--neon-pink);
+  background: linear-gradient(135deg, #ff4d87, #ff2a6d);
   color: #fff;
-  box-shadow: 0 0 15px var(--neon-pink);
-  transform: translateY(-2px);
+  box-shadow: 0 0 18px var(--neon-pink-glow);
 }
 
 .btn-cyber-outline {
@@ -186,7 +219,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-cyber:active {
-  transform: translateY(1px);
+  transform: translateY(0);
 }
 
 /* Inputs & Form Elements */
@@ -206,21 +239,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .form-input {
   width: 100%;
-  padding: 0.75rem 1rem;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid var(--panel-border);
-  border-radius: 4px;
+  padding: 0.82rem 1rem;
+  background: linear-gradient(180deg, rgba(4, 9, 17, 0.7), rgba(8, 12, 20, 0.58));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
   color: var(--text-primary);
   font-family: var(--font-body);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   outline: none;
   transition: all var(--transition-speed) ease;
 }
 
 .form-input:focus {
   border-color: var(--neon-cyan);
-  box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
-  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 0 4px var(--neon-cyan-glow);
+  background: rgba(7, 9, 14, 0.82);
 }
 
 /* Game Mechanics (Memory Grid Layout) */
@@ -237,10 +270,11 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   width: 100%;
   max-width: 600px;
-  padding: 0.75rem 1.5rem;
-  background: rgba(15, 17, 26, 0.8);
-  border: 1px solid var(--panel-border);
-  border-radius: 6px;
+  padding: 0.9rem 1.4rem;
+  background: linear-gradient(180deg, rgba(19, 24, 38, 0.9), rgba(13, 16, 26, 0.78));
+  border: 1px solid rgba(103, 249, 255, 0.18);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .stat-box {
@@ -421,18 +455,23 @@ h1, h2, h3, h4, h5, h6 {
 /* Leaderboard Page styling */
 .leaderboard-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   margin-top: 1.5rem;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
 .leaderboard-table th {
   font-family: var(--font-title);
   color: var(--neon-cyan);
   text-transform: uppercase;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
+  letter-spacing: 1.4px;
   text-align: left;
   padding: 1rem;
-  border-bottom: 2px solid var(--panel-border);
+  border-bottom: 1px solid rgba(103, 249, 255, 0.18);
+  background: rgba(9, 14, 24, 0.8);
 }
 
 .leaderboard-table td {
@@ -441,7 +480,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .leaderboard-table tr:hover {
-  background: rgba(255, 255, 255, 0.02);
+  background: linear-gradient(135deg, rgba(103, 249, 255, 0.06), rgba(255, 77, 135, 0.04));
 }
 
 .leaderboard-rank {
