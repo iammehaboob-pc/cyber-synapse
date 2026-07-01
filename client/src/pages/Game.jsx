@@ -223,7 +223,7 @@ const Game = ({ user, onUpdateUser, playSound }) => {
               Neural Arena
             </span>
             <h2 className="glitch-text" style={{ fontSize: '2.35rem', marginBottom: '0.2rem', color: 'var(--text-primary)' }}>
-              NEON_MEMORY
+              CYBER SYNAPSE
             </h2>
           </div>
           <p style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-title)', letterSpacing: '1px', marginBottom: '1.8rem', fontSize: '0.92rem' }}>

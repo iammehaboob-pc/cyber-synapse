@@ -18,7 +18,7 @@ app.use('/api', apiRoutes);
 
 // Test Route
 app.get('/', (req, res) => {
-  res.send('Neon Memory Game Server API is running.');
+  res.send('Cyber Synapse API is running.');
 });
 
 // Error handling middleware for route not found
@@ -32,8 +32,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Server encountered an unexpected error' });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
-  console.log(`[SERVER] Neon Memory Server running on port ${PORT}`);
+  console.log(`[SERVER] Cyber Synapse API running on port ${PORT}`);
 });

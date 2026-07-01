@@ -53,9 +53,9 @@ const Navbar = ({ user, onLogout, isMuted, toggleMute, playSound }) => {
             gap: '0.5rem'
           }}
         >
-          <span style={{ color: 'var(--neon-cyan)', textShadow: '0 0 5px var(--neon-cyan-glow)' }}>NEON</span>
+          <span style={{ color: 'var(--neon-cyan)', textShadow: '0 0 5px var(--neon-cyan-glow)' }}>CYBER</span>
           <span style={{ color: 'var(--neon-pink)', textShadow: '0 0 5px var(--neon-pink-glow)' }}>//</span>
-          <span>MEMORY</span>
+          <span style={{ color: 'var(--text-primary)' }}>SYNAPSE</span>
         </Link>
 
         {/* Action Links */}
